@@ -1,8 +1,60 @@
 spring:
   application:
     name: ai-agent
+  #使用local配置文件
   profiles:
     active: local
+  #配置postgresql数据库
+  datasource:
+    url: #####替换自己的
+    username: #####
+    password: #####
+  #ai配置（使用的是阿里 灵积）
+  ai:
+    dashscope:
+      api-key: #########
+      chat:
+        options:
+          model: qwen-plus #可替换
+    mcp:
+      client:
+        #自定义开发的 图片搜索MCP
+        #        sse:
+        #          connections:
+        #            server1:
+        #              url: http://localhost:8181
+        stdio:
+          servers-configuration: classpath:mcp-servers.json
+    #向量数据库配置
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        dimensions: 1536
+        distance-type: COSINE_DISTANCE
+        max-document-batch-size: 10000
+  #邮件配置
+  mail:
+    host: smtp.qq.com
+    port: 465
+    username: #your qq@qq.com
+    password: #授权码
+    protocol: smtp
+    default-encoding: UTF-8
+    test-connection: false #禁用启动时测试连接
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+        socketFactory:
+          class: javax.net.ssl.SSLSocketFactory
+          port: 465
+        connectiontimeout: 15000
+        timeout: 15000
+        writetimeout: 15000
+        debug: true
+
 server:
   port: 9090
   servlet:
@@ -25,3 +77,20 @@ knife4j:
   enable: true
   setting:
     language: zh_cn
+#阿里云OSS配置
+aliyun:
+  oss:
+    endpoint: ####替换自己的
+    bucketName: ####替换自己的
+    region: ####替换自己的
+#Search API
+search-api:
+  api-key: ##########替换自己的apikey
+
+#日志等级
+logging:
+  level:
+    org.springframework.ai: DEBUG
+
+
+
