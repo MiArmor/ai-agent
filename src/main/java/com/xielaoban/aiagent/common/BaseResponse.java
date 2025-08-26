@@ -2,6 +2,7 @@ package com.xielaoban.aiagent.common;
 
 import com.xielaoban.aiagent.execption.ErrorCode;
 import lombok.Data;
+import reactor.core.publisher.Flux;
 
 import java.io.Serializable;
 
@@ -14,11 +15,13 @@ public class BaseResponse<T> implements Serializable {
 
     private String message;
 
+
     public BaseResponse(int code, T data, String message) {
         this.code = code;
         this.data = data;
         this.message = message;
     }
+
 
     public BaseResponse(int code, T data) {
         this(code, data, "");

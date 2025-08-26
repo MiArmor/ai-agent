@@ -23,6 +23,13 @@ public class GlobalExceptionHandler {
         log.error("RuntimeException", e);
         return ResultUtils.error(ErrorCode.SYSTEM_ERROR, "系统错误");
     }
+
+    @ExceptionHandler(AgentException.class)
+    public BaseResponse<?> agentExceptionHandler(AgentException e){
+        log.error("AgentException", e);
+        return ResultUtils.error(ErrorCode.OPERATION_ERROR, e.getMessage());
+    }
+
 }
 
 
