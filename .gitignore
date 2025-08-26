@@ -1,5 +1,9 @@
 ### CUSTOM ###
 application-local.yml
+tmp/
+chat-memory/
+test/
+apiKey.txt
 
 HELP.md
 target/
