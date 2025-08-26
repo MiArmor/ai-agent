@@ -138,8 +138,6 @@ public class TravelApp {
                 .prompt()
                 .user(message)
                 .advisors(spec -> spec.param(ChatMemory.CONVERSATION_ID, chatId))
-//                // 开启日志，便于观察效果
-//                .advisors(new MyLoggerAdvisor())
                 // 应用增强检索服务（云知识库服务）
                 .advisors(travelAppRagCloudAdvisor)
                 .call()
